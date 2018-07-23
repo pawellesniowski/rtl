@@ -1,0 +1,59 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\Pawel_Lesniowski\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js run watch-node
+
+PATH: 
+  C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin;C:\edu\node\rtl\node_modules\.bin;C:\cmder\bin;C:\cmder\vendor\conemu-maximus5\ConEmu\Scripts;C:\cmder\vendor\conemu-maximus5;C:\cmder\vendor\conemu-maximus5\ConEmu;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Ruby24-x64\bin;C:\Users\Pawel_Lesniowski\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\Users\Pawel_Lesniowski\AppData\Roaming\npm;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\share\vim\vim74;C:\cmder\
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  10.5.0
+
+Platform: 
+  win32 x64
+
+npm manifest: 
+  {
+    "name": "rtl",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "watch-ts": "tsc -w",
+      "watch-node": "nodemon dist/server.js",
+      "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript, Node\" -c \"yello.bold, cyan.bold\" \"yarn run watch-ts\" \"yarn run watch-node\""
+    },
+    "author": "pawel_lesniowski@epam.com",
+    "license": "ISC",
+    "devDependencies": {
+      "@types/node": "^10.5.2",
+      "concurrently": "^3.6.0",
+      "node-fetch": "^2.2.0",
+      "nodemon": "^1.18.3"
+    },
+    "dependencies": {
+      "express": "^4.16.3"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: Command failed.
+  Exit code: 3221225786
+  Command: C:\WINDOWS\system32\cmd.exe
+  Arguments: /d /s /c nodemon dist/server.js
+  Directory: C:\edu\node\rtl
+  Output:
+  
+      at ProcessTermError.MessageError (C:\Users\Pawel_Lesniowski\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:186:110)
+      at new ProcessTermError (C:\Users\Pawel_Lesniowski\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:226:113)
+      at ChildProcess.<anonymous> (C:\Users\Pawel_Lesniowski\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:30281:17)
+      at ChildProcess.emit (events.js:182:13)
+      at maybeClose (internal/child_process.js:961:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:248:5)

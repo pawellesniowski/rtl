@@ -1,0 +1,23 @@
+{
+  "name": "rtl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm install && tsc",
+    "build": "tsc",
+    "dev": "concurrently --kill-others \"tsc --watch\" \"nodemon dist/index.js\""
+  },
+  "author": "pawel_lesniowski@epam.com",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^10.5.2",
+    "concurrently": "^3.6.0",
+    "node-fetch": "^2.2.0",
+    "nodemon": "^1.18.3",
+    "typescript": "^2.9.2"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
