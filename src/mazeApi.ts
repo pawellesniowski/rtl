@@ -1,3 +1,5 @@
+import fetch from 'node-fetch'
+
 export interface MoviesResponse {
     name: string;
     id: number;
@@ -23,10 +25,12 @@ export interface MoviesAndCast {
 export class RtlApi {
     constructor(private url: string) { }
 
-    private getData<T>(path: string):Promise(T) {
+    private getData<T>(path: string):Promise<T> {
         return new Promise((resolve, reject) => {
-
-})
-}
+            function recursive(counter: number){
+                fetch(path)
+            }
+        })
+    }
 
 }
