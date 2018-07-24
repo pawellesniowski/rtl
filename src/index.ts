@@ -1,29 +1,23 @@
-import * as express from'express';
+import * as express from 'express';
+
 const fetch = require('node-fetch');
 const app = express();
 
-app.get('/', (req, res) => {
-    let data;
-    fetch('http://api.tvmaze.com/search/shows?q=girls')
-        .then(response => response.json())
-        .then((movies) => {
-            data = movies.map((i) => {
-                return {id: i.show.id, name: i.show.name}
-            });
-            return fetch(`http://api.tvmaze.com/shows/${data[0].id}/cast`);
-        })
-        .then((cast) => {
-            return cast.text()
-            // return JSON.stringify(data);
-        })
-        .then((cast) => {
-            const fullResponse = cast;
-            res.setHeader('Content-Type', 'application/json');
-            res.send(fullResponse);
-        })
-        .catch((err) => {
-            console.log('error: ', err)
-        })
+app.get('/', async (req, res) => {
+    const response = await fetch('http://api.tvmaze.com/search/shows?q=girls');
+    const movies = await response.json();
+    const data = await movies.map((itemMovie) => ({id: itemMovie.show.id, name: itemMovie.show.name}));
+
+    const casts = await data.map(async (movie) => {
+        const response2 = await fetch(`http://api.tvmaze.com/shows/${movie.id}/cast`);
+        const cast = await response2.json();
+        return {...movie, cast: cast.map(c => ({id: c.id}))};
+    });
+
+    await Promise.all([casts]);
+
+    res.setHeader('Content-Type', 'application/json');
+    res.send(casts);
 });
 
 app.listen(3000, () => console.log('App listening on port 3000!'));
